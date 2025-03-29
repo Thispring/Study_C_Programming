@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/ogs/Downloads/C/class_1'
+relocations:     []
+...
