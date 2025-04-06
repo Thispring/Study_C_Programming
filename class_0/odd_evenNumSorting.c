@@ -13,8 +13,10 @@
 int main()
 {
     int num[10];  // 숫자를 받는 배열
-    int oddNum[20]; // 홀수 배열
-    int evenNum[20];    // 짝수 배열
+    // 자연수만 받으므로 공백에는 0추가
+    int oddNum[10] = {0, }; // 홀수 배열
+    int evenNum[10]= {0, }; // 짝수 배열
+    int count = 0;
 
     printf("숫자 입력:");
     for(int i = 0; i < 10; i++)
@@ -24,48 +26,33 @@ int main()
     
     for(int i = 0; i < 10; i++)
     {
-        if((num[i])%2 == 0)  // 짝수 구별
+        if((num[i])%2 == 0)  // 홀짝 구별, 2의 몫이 0이면 짝수, 아니면 홀수
         {
             evenNum[i] = num[i];
-            evenNum[i+1] = 0; // 다음 배열에 공백 추가
         }
         else
-        {
-            evenNum[i] = 0; // 짝수가 아닌 배열에 0추가
-        }
-
-        if((num[i])%2 != 0)    // 홀수 구별
         {
             oddNum[i] = num[i];
-            oddNum[i+1] = 0; // 다음 배열에 공백 추가
-        }
-        else
-        {
-            oddNum[i] = 0; // 홀수가 아닌 배열에 0추가
         }
     }
 
     for(int i = 0; i < 10; i++)
     {
-        if (oddNum[i] == 0)
+        if (oddNum[i] != 0)
         {
-            printf(" ");
-        }
-        else
-        {
-            printf("%d", oddNum[i]);
+            printf("%d ", oddNum[i]);
+            count++;
         }
     }
-    printf("\n");
+
+    if (count != 0) // 만약 첫 번째줄(홀수)이 출력되면 개행문자 출력 
+        printf("\n");
+
     for(int i = 0; i < 10; i++)
     {
-        if (evenNum[i] == 0)
+        if (evenNum[i] != 0)
         {
-            printf(" ");
-        }
-        else
-        {
-            printf("%d", evenNum[i]);
+            printf("%d ", evenNum[i]);
         }
     }
 

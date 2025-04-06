@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
 주어진 문자열을 "알파벳+연속된 횟수"의 구성으로 재구성하세요.
@@ -6,31 +7,28 @@
 */
 int main()
 {
-    char sentence[10]; // 문자열 배열
-    // char *ps = &sentence;    // 문자열 포인터
+    char sentence[100]; // 문자열 배열
+    int count = 1;
 
     printf("문자열 입력:");
     scanf("%s", sentence);
 
-    printf("%s", sentence);
-    printf("\n");
-
-    char *ps = sentence;
-    for (int i = 0; i < 25; i++)
+    char current = sentence[0];
+    for (int i = 1; i < strlen(sentence); i++)  // strlen, 문자열의 길이를 널 문자전까지 계산
     {
-        for (int j = 0; j < 10; j++)
+        if (current != sentence[i])
         {
-            //printf("%d", sentence[i]);
-            if ((int)sentence[i] == (65 + i))
-            {
-                printf("같은 문자 찾음2\n");
-                if ((65 + i) == *(ps + j) || (97 + i) == *(ps + j))
-                {
-                    printf("같은 문자 찾음\n");
-                }
-            }
+            printf("%c%d", current, count);
+            count = 1;    // 다른 값이 있으면 카운트를 초기화
+            current = sentence[i];  // current 변수에 다른 문자열 전달
+        }
+        else
+        {
+            count++;    // 다른 배열(주소)에 같은 값이 있으면 카운트 업
         }
     }
+    printf("%c%d", current,count);
+    printf("\n");
 
     return 0;
 }
