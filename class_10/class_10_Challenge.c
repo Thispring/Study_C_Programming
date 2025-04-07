@@ -22,25 +22,26 @@ int main()
 void input_nums(int *lotto_nums) // 포인터 변수 lotto_nums
 {
     printf("로또 번호 입력: \n");
-    int count = -1;
-
+    
     for (int i = 0; i < 6; i++)
     {
         scanf("%d", &lotto_nums[i]); // 배열에 숫자 입력
 
-        for (int j = 0; j < count; j++)
+        for (int j = 0; j < i; j++)
         {
-            if (lotto_nums[i] == lotto_nums[j])
+            if (lotto_nums[i] == lotto_nums[j]) // i는 현재 입력된 배열,
             {
                 printf("같은 번호가 있습니다!");
+                i = j;  // 중복된 배열 번호로 i 초기화
                 break;
             }
-            else
+            else if (lotto_nums[i] > 45)
             {
-                printf("검사완료\n");
+                printf("1~45중에 입력하세요!");
+                i -= 1;
+                break;
             }
         }
-        count++;
     }
 }
 
