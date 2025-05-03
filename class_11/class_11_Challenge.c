@@ -11,41 +11,35 @@
 int main()
 {
     // 배열사용 금지이므로, 버퍼를 활용
-    char ch1, ch2;
-    int res1, res2;
-    int count1, count2 = 0;
-    while (1)
+    // '문자열'이 아닌 '문자'를 받아 카운트
+    // 문자를 세는 반복문 1개와 EOF == -1 까지 반복하는 반복문 사용
+    char ch;
+    
+    int count = 0;
+    int maxCount = 0;
+
+    ch = getchar(); // getchar함수로 '문자'를 받기
+    while (ch != EOF)   // Ctrl + Z로 반복종료
     {
-        printf("단어 입력:  ");
-        scanf("%s", &ch1);
+        count = 0; // 카운트 초기화
 
-        for (int i = 0; i < sizeof(ch1); i++)
-        {
-            count1 += 1;
-        }
-        printf("count1 : %d\n", count1);
-
-        printf("단어 입력:  ");
-        scanf("%s", &ch2);
-
-        for (int i = 0; i < sizeof(ch2); i++)
-        {
-            count2 += 1;
-        }
-        printf("count2 : %d\n", count2);
-        
-        if (count1 > count2)    // count 끼리 비교해서 작은 count를 0으로 초기화
-        {
-            count2 = 0;
-        }
-        else
-        {
-            count1 = 0;
-        }
-
-        if (res1 == -1) // Ctrl + Z까지 반복
+        if(ch == EOF)
             break;
+        while (ch != '\n') // 개행문자가 아닐 때 까지 반복
+        {
+            count++;
+            ch = getchar(); // getchar함수를 통해 버퍼에 남아있는 문자 받기
+        }
+
+        if (count > maxCount) // maxCount보다 count가 크다면
+        {
+            maxCount = count; // maxCount에 count값 대입
+            printf("maxCount: %d\n", maxCount); 
+        }
+        ch = getchar(); // 마지막에 getchar를 통해 반복 실행
     }
+    
+    printf("가장 길이가 긴 단어: %d\n", maxCount);
 
     return 0;
 }
