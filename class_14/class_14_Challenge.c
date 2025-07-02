@@ -7,6 +7,54 @@
 5행 6열의 2차원 배열을 선언하고 4행 5열 부분은 1부터 20까지 초기화합니다. 초기화된 배열에서
 마지막 열의 요소에는 각 행의 합을 저장하고 마지막 행의 요소에는 각 열의 합을 저장한 후 전체 배열의 값을 출력하세요.
 */
+// 변수 이름 역할에 맞게 짓기
+int main()
+{
+    int ary[5][6] = {
+        0,
+    };
+    int count = 1; // 4열 * 5행 1-20 초기화를 위한 변수
+    int total_sum = 0;   // 전체 합 저장을 위한 변수
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            ary[i][j] = count;      // 1-20 숫자 저장
+            total_sum += count;     // 전체 합 누적으로 계산
+            count++;
+        }
+    }
+    ary[4][5] = total_sum;          // 전체 합 저장
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            ary[i][5] += ary[i][j];     // 각 행의 합 저장
+        }
+    }
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            ary[4][j] += ary[i][j];     // 각 열의 합 저장
+        }
+    }   
+
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 6; j++)
+        {
+            printf("%d ", ary[i][j]);   // 출력
+        }
+        printf("\n");
+    }   
+
+    return 0;
+}
+/*
 int main()
 {
     int ary[5][6] = {
@@ -59,3 +107,4 @@ int main()
 
     return 0;
 }
+*/
