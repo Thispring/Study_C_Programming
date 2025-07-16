@@ -17,9 +17,11 @@ int main(void)
     for (i = 0; i < 3; i++)
     {
         printf("문자열을 입력하세요: ");
-        gets(temp);     // 문자열 입력
+        fgets(temp, sizeof(temp), stdin);
+        //gets(temp);     // 문자열 입력
         if (str[i] == NULL) // 동적 할당 실패 예외 처리
         {
+            printf("실패");
             exit(1);
         }
         str[i] = (char *)malloc(strlen(temp) + 1);  // 문자열 저장 공간 할당

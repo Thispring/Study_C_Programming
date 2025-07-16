@@ -18,7 +18,8 @@ int main(void)
     while (i < 20)  // 최대 20까지 입력
     {
         printf("문자열을 입력하세요: ");
-        gets(temp);
+        fgets(temp, sizeof(temp), stdin);
+        //gets(temp);
         if (strcmp(temp, "end") == 0) break;    // end가 입력되면 반복 종료
         // 문자열 비교함수 strcmp를 이용
         str[i] = (char *)malloc(strlen(temp) + 1);  // 문자열 저장 공간 할당
