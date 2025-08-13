@@ -23,6 +23,7 @@ int main(void)
 
 void InputInfo(struct cracker ck)
 {
+    // NOTE: scanf 문법 확인 필수
     // 동적할당으로 입력 공간 확보
     printf("바사삭의 가격과 열량을 입력하세요: \n");
     scanf("%d%d", &ck.price, &ck.calories);
