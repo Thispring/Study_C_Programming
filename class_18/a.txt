@@ -1,2 +1,3 @@
-appleapple
+apple
 banana
+strawberry

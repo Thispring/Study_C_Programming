@@ -14,8 +14,8 @@ fgets와 fputs : 한 줄씩 입출력:
 int main(void)
 {
     FILE *ifp, *ofp;    // 파일 포인터 선언
-    char str[5];          // fgets는 배열의 크기 까지만 입력하므로 결과가 달라짐
-    //char str[80];       // 입력한 문자열을 저장할 배열
+    //char str[5];          // fgets는 배열의 크기 까지만 입력하므로 결과가 달라짐
+    char str[80];       // 입력한 문자열을 저장할 배열
     char *res;          // fgets 함수의 반환값을 저장할 변수
 
     ifp = fopen("a2.txt", "r"); // 입력 파일을 읽기 전용으로 개방

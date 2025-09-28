@@ -17,6 +17,7 @@ int main(void)
     fprintf(afp, "%d", num);        // num의 값을 문자로 변환하여 출력
     // a5.txt 데이터 비트열: 
     // 00110001 00110000
+    // 10이 아닌 1과 0으로 분리
 
     bfp = fopen("b5.txt", "wb");    // 바이너리 모드로 출력 파일 개방
     fwrite(&num, sizeof(num), 1, bfp);  // num의 값을 그대로 파일에 출력
@@ -28,11 +29,14 @@ int main(void)
 
     bfp = fopen("b5.txt", "rb");    // 바이너리 모드로 입력 파일 개방
     fread(&res, sizeof(res), 1, bfp);   // 파일의 데이터를 그대로 변수에 입력
+    // fread로 b5.txt에 아스키 코드 값으로 저장하지 않기에 텍스트 파일 편집기로 값을 볼 수 없다. 
     printf("%d", res);              // 입력한 데이터 확인
 
     fclose(bfp);
 
     return 0;
+    // fread와 fwrite 함수가 데이터를 있는 그대로 입출력할 수 있도록 파일은 항상 바이너리 모드로 개방합니다.
+    // 텍스트 모드로 개방하면 개행 문자의 처리 방식이 달라 데이터의 크기와 파일의 크기가 다를 수 있습니다.
 }
 // fwrite(출력할 데이터의 주소, 크기, 개수, 파일 포인터); <- fwrite 함수 인수
 // fread(입력할 데이터의 주소, 크기, 개수, 파일 포인터); <- fread 함수 인수
