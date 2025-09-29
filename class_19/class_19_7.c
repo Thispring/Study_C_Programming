@@ -20,6 +20,9 @@ typedef struct
     int in;
 } Sample2;
 
+#pragma warning(disable:4101)   // 4101번 경고 메시지는 모두 표시하지 않음
+// C4101 : 사용하지도 않은 지역변수를 선언했다는 뜻
+
 int main(void)
 {
     printf("Sample1 Size: %d\n", sizeof(Sample1));
