@@ -29,3 +29,36 @@ void swap(double *pa, double *pb)
     *pa = *pb;
     *pb = temp;    
 }
+
+void line_up(double *maxp, double *midp, double *minp)
+{
+    // maxp가 가장 큰 경우
+    if (*maxp > *midp)
+    {
+        if (*maxp > *minp)
+        {
+            if (*minp > *midp)
+                swap(minp, midp);
+        }
+    }
+    // midp가 가장 큰 경우
+    if (*midp > *maxp)
+    {
+        if (*midp > *minp)
+        {
+            swap(midp, maxp);
+            if (*minp > *midp)
+                swap(minp, midp);
+        }
+    }
+    // minp가 가장 큰 경우
+    if (*minp > *maxp)
+    {
+        if (*minp > *midp)
+        {
+            swap(minp, maxp);
+            if (*minp > *midp)
+                swap(minp, midp);
+        }
+    }
+}
