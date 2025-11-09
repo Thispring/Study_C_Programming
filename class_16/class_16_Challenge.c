@@ -39,8 +39,8 @@ void print_prime(int *pn)
     // 지역변수 index에 역참조 값을 저장
     int index = *pn;
     int *pi;
-    //pn의 역참조 값 * char size만큼 동적 공간 생성
-    // 할당 공간에 소수라면 숫자를, 소수가 아니면 'X'문자를 집어넣기
+    // pn의 역참조 값 * char size만큼 동적 공간 생성
+    // 할당 공간에 소수라면 해당 숫자를 리턴하고, 소수가 아니면 'X'문자를 출력하도록 0을 리턴
     pi = (int *)malloc(*pn * sizeof(int));
 
     // 1부터 시작해야 하므로, pn + 1의 크기만큼 반복
@@ -66,7 +66,7 @@ int check_prime(int index)
 {
     // 판별 숫자를 복사하여, 복사된 숫자가 1이 될때 까지 반복
     // 이때 나눗셈 결과가 1일때 마다 카운트
-    // 만약 카운트가 3이상이라면 'X'를 return
+    // 만약 카운트가 3이상이라면 'X'를 출력하도록 0을 반환
     int divNum = index;
     int primeCount = 0;
 
